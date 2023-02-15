@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:arkit_plugin/arkit_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
@@ -25,7 +27,7 @@ class _MeasurePageState extends State<MeasurePage> {
       final l = _objectLength1! > _objectLength2! ? _objectLength1 : _objectLength2;
       final w = _objectLength1! < _objectLength2! ? _objectLength1 : _objectLength2;
       debugPrint('================= Length =  $l   & Width = $w');
-      _weight = (l! * l * l * l * w!) / 300;
+      _weight = (pow(w!, 4)* l!) / 300;
     }
     return _weight;
   }
