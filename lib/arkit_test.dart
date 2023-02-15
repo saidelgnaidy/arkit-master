@@ -63,7 +63,7 @@ class _MeasurePageState extends State<MeasurePage> {
                         ),
                       const SizedBox(height: 10),
                       if (weight != null)
-                        Text("Sheep Weight =  ( ${gramToPounds(weight!).toStringAsFixed(2)} Pounds )   , ${(weight! / 1000).toStringAsFixed(2)} kg "),
+                        Text("Sheep Weight =  ( ${weight!.toStringAsFixed(2)} Pounds )   , ${poundsToKG(weight!).toStringAsFixed(2)} kg "),
                     ],
                   ),
                 ),
@@ -217,3 +217,4 @@ class _MeasurePageState extends State<MeasurePage> {
 
 double cmToIn(double cm) => cm * 0.393701;
 double gramToPounds(double g) => g * 0.00220462;
+double poundsToKG(double lb) => lb * 0.453592;
