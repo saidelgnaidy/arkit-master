@@ -26,7 +26,7 @@ class _MeasurePageState extends State<MeasurePage> {
     if (_objectLength1 != null && _objectLength2 != null) {
       final l = _objectLength1! > _objectLength2! ? _objectLength1 : _objectLength2;
       final w = _objectLength1! < _objectLength2! ? _objectLength1 : _objectLength2;
-      _weight = (pow(cmToIn(w!), 4) * cmToIn(l!)) / 300;
+      _weight = (pow(cmToIn(w!), 2) * cmToIn(l!)) / 300;
     }
     return _weight;
   }
