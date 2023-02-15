@@ -27,7 +27,7 @@ class _MeasurePageState extends State<MeasurePage> {
       final l = _objectLength1! > _objectLength2! ? _objectLength1 : _objectLength2;
       final w = _objectLength1! < _objectLength2! ? _objectLength1 : _objectLength2;
       debugPrint('================= Length =  $l   & Width = $w');
-      _weight = (pow(w!, 4)* l!) / 300;
+      _weight = (pow(w!, 4) * l!) / 300;
     }
     return _weight;
   }
@@ -55,15 +55,16 @@ class _MeasurePageState extends State<MeasurePage> {
                     children: [
                       if (_objectLength1 != null)
                         Text(
-                          "(${_objectLength1! > (_objectLength2 ?? 0) ? 'Length' : 'Width'} )   =  ${_objectLength1?.toStringAsFixed(2)} cm , ( ${(_objectLength1! / 100).toStringAsFixed(2)} m ) ",
+                          "(${_objectLength1! > (_objectLength2 ?? 0) ? 'Length' : 'Width'} )   =  ( ${cmToIn(_objectLength1!).toStringAsFixed(2)} IN )  , ${_objectLength1?.toStringAsFixed(2)} cm  ",
                         ),
                       const SizedBox(height: 5),
                       if (_objectLength2 != null)
                         Text(
-                          "(${_objectLength2! > (_objectLength1 ?? 0) ? 'Length' : 'Width'} ) =  ${_objectLength2?.toStringAsFixed(2)}  cm  , ( ${(_objectLength2! / 100).toStringAsFixed(2)} m )",
+                          "(${_objectLength2! > (_objectLength1 ?? 0) ? 'Length' : 'Width'} ) =   ( ${cmToIn(_objectLength2!).toStringAsFixed(2)} IN )   , ${_objectLength2?.toStringAsFixed(2)}  cm ",
                         ),
                       const SizedBox(height: 10),
-                      if (weight != null) Text("Sheep Weight =  ${weight?.toStringAsFixed(2)}   in gram  , ( ${(weight! / 1000).toStringAsFixed(2)} kg )"),
+                      if (weight != null)
+                        Text("Sheep Weight =  ( ${gramToPounds(weight!).toStringAsFixed(2)} Pounds )   , ${(weight! / 1000).toStringAsFixed(2)} kg "),
                     ],
                   ),
                 ),
@@ -214,3 +215,6 @@ class _MeasurePageState extends State<MeasurePage> {
     arkitController.add(node);
   }
 }
+
+double cmToIn(double cm) => cm * 0.393701;
+double gramToPounds(double g) => g * 0.00220462;
